@@ -1,0 +1,11 @@
+TAP version 14
+{"level":30,"time":1740286162624,"pid":96640,"hostname":"MacBook-Air-Dmitry.local","msg":"Server listening at http://[::1]:8000"}
+{"level":30,"time":1740286162625,"pid":96640,"hostname":"MacBook-Air-Dmitry.local","msg":"Server listening at http://127.0.0.1:8000"}
+{"level":30,"time":1740286162627,"pid":96640,"hostname":"MacBook-Air-Dmitry.local","reqId":"req-1","req":{"method":"GET","url":"/api/ping","host":"127.0.0.1:53729","remoteAddress":"::ffff:127.0.0.1","remotePort":53730},"msg":"incoming request"}
+{"level":30,"time":1740286162625,"pid":96640,"hostname":"MacBook-Air-Dmitry.local","msg":"Server running at: http://[::1]:8000"}
+{"level":30,"time":1740286162629,"pid":96640,"hostname":"MacBook-Air-Dmitry.local","reqId":"req-1","res":{"statusCode":200},"responseTime":2.2683329582214355,"msg":"request completed"}
+# Subtest: GET `/` route
+    ok 1 - should be equal
+    1..1
+ok 1 - GET `/` route # time=69ms
+
