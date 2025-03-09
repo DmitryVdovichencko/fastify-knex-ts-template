@@ -3,10 +3,14 @@ import { FastifyInstance, FastifyContextConfig } from "fastify";
 import fp from "fastify-plugin";
 import autoLoad from "@fastify/autoload";
 import cors from "@fastify/cors";
+import fastifyKnexPlugin from "./plugins/knex";
 import fastifySwagger from "@fastify/swagger";
 import fastifySwaggerUi from "@fastify/swagger-ui";
 import { config as appConfig, swagger, swaggerUi } from "./config/config";
-import pingRouter from "./routes/ping";
+import { config as databaseConfig } from "./config/database";
+import fastifyJwt from "@fastify/jwt";
+import { pingRoute} from "./routes/ping/ping.route";
+import { userRoute } from "./routes/user/user.route";
 /**
  * Configure and starts Fastify server with all required plugins and routes
  * @async
@@ -17,17 +21,19 @@ import pingRouter from "./routes/ping";
  * @returns {Fastify.Server} started Fastify server instance
  */
 
-
 async function plugin(server: FastifyInstance, config: FastifyContextConfig) {
   server
     .register(cors, {})
     .register(fastifySwagger, swagger)
     .register(fastifySwaggerUi, swaggerUi)
-    .register(autoLoad, {
-      dir: path.join(__dirname, "routes"),
-      options: config,
-    })
-
+    // .register(autoLoad, {
+    //   dir: path.join(__dirname, "routes"),
+    //   options: config,
+    // })
+    .register(userRoute, { prefix: "user" })
+		.register(pingRoute, { prefix: "ping" })
+    .register(fastifyKnexPlugin, databaseConfig)
+    .register(fastifyJwt, { secret: appConfig.auth.jwtSecret });
 
   server.setErrorHandler((err, req, res) => {
     req.log.error({ req, res, err }, err && err.message);

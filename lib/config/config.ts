@@ -1,11 +1,16 @@
 import { FastifySwaggerOptions, SwaggerOptions } from "@fastify/swagger";
 import { FastifySwaggerUiConfigOptions, FastifySwaggerUiOptions } from "@fastify/swagger-ui";
+import { Knex } from "knex";
+require('dotenv').config();
 
 export const config = {
   fastify: {
     host: "localhost",
     port: 8000,
   },
+	auth:{
+		jwtSecret: process.env.JWT_SECRET ?? 'secret'
+	},
   fastifyInit: {
     // trustProxy: 2,
     // disableRequestLogging: true,

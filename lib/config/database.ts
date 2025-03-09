@@ -1,4 +1,5 @@
 import { knex as setupKnex, Knex } from 'knex';
+require('dotenv').config();
 
 export const config: Knex.Config = {
   client: 'postgresql',

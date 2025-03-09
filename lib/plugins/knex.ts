@@ -1,7 +1,8 @@
-'use strict'
 
-import { FastifyInstance, FastifyPluginOptions } from 'fastify'
+
+import { FastifyPluginOptions } from 'fastify'
 import fp from 'fastify-plugin'
+import { FastifyInstance } from 'fastify/types/instance'
 import Knex from 'knex'
 
 function knexPlugin(fastify: FastifyInstance, options: FastifyPluginOptions, done: () => void) {
