@@ -29,6 +29,29 @@ export const userListSchema = {
   },
 };
 
+export const userSchema = {
+  schema: {
+    description: "User me route",
+    response: {
+      200: {
+        description: "Successful user data response",
+        type: "object",
+        properties: {
+                id: {
+                  type: "string",
+                },
+                // name: {
+                //   type: "string",
+                // },
+                email: {
+                  type: "string",
+                },
+              },
+            },
+          },
+        },
+};
+
 
 export const registerUserSchema = {
   schema: {

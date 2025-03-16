@@ -33,3 +33,4 @@ export const getUserList = async (request: FastifyRequest, reply: FastifyReply, 
 
 		reply.code(200).send({ list: users });
 };
+
